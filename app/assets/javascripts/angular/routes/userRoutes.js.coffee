@@ -24,10 +24,16 @@ angular.module("questler")
           "users/#{params.id}/edit.html"
         controller: 'UserEditCtrl'
 
+      .state 'updateUser',
+        url: '/users/:id/update'
+        templateUrl: (params) ->
+          "users/#{params.id}/edit.html"
+        controller: 'UserUpdateCtrl'
+
       .state 'destroyUser',
         url: '/users/:id/destroy'
         controller: 'UserDestroyCtrl'
       
       $urlRouterProvider.otherwise '/users'
-      
+
     return
