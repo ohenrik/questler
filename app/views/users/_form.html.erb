@@ -1,37 +1,30 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<form ng-submit="users/1/update">
+  
+    <div class="field">
+      <label for="username">Username</label><br>
+      <input type="text" id="username" ng-model="user.username">
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="field">
+      <label for="email">Email</label><br>
+      <input type="text" id="email" ng-model="user.email">
+    </div>
+    <div class="field">
+      <label for="password">Password</label><br>
+      <input type="text" id="password" ng-model="user.password">
+    </div>
+    <div class="field">
+      <label for="password_confirmation">Password Confirmation</label><br>
+      <input type="text" id="password_confirmation" ng-model="user.password_confirmation">
+    </div>
+    <div class="field">
+      <label for="first_name">First Name</label><br>
+      <input type="text" id="first_name" ng-model="user.first_name">
+    </div>
+    <div class="field">
+      <label for="last_name">Last Name</label><br>
+      <input type="text" id="last_name" ng-model="user.last_name">
+    </div>
+    <div class="actions">
+      <input type="submit">
+    </div>
+</form>
