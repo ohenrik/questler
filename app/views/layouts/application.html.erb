@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="/">
   <title>Questler</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -8,6 +9,8 @@
 </head>
 <body>
 
+<ng-view></ng-view>
 
+<div ui-view></div>
 </body>
 </html>
