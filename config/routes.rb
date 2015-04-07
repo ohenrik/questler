@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'login' => 'session#new'
+  resources :structures
+
+  resources :quests
+
+  get 'login' => 'sessions#new'
 
   get 'sessions/create'
 
-  get 'logout' => 'session#destroy'
+  get 'logout' => 'sessions#destroy'
 
   resources :users
 

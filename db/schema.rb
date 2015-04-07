@@ -11,10 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319083030) do
+ActiveRecord::Schema.define(version: 20150404151758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "items", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "structure_id"
+    t.integer  "itemizable_id"
+    t.string   "itemizable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "items", ["itemizable_type", "itemizable_id"], name: "index_items_on_itemizable_type_and_itemizable_id", using: :btree
+  add_index "items", ["structure_id"], name: "index_items_on_structure_id", using: :btree
+
+  create_table "quests", force: :cascade do |t|
+    t.string   "title"
+    t.text     "excerpt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "structures", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.integer  "constructable_id"
+    t.string   "constructable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "structures", ["constructable_type", "constructable_id"], name: "index_structures_on_constructable_type_and_constructable_id", using: :btree
+
+  create_table "text_items", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -24,6 +64,8 @@ ActiveRecord::Schema.define(version: 20150319083030) do
     t.string   "last_name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "avatar_id"
   end
 
+  add_foreign_key "items", "structures"
 end

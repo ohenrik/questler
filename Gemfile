@@ -39,6 +39,16 @@ gem 'angularjs-rails'
 # Summary: Use ngannotate in the Rails asset pipeline.
 gem 'ngannotate-rails'
 
+# Refile and image magick for user profile images
+gem "mini_magick"
+gem "refile", require: ["refile/rails", "refile/image_processing"]
+
+# Allow cros site access
+gem 'rack-cors', :require => 'rack/cors'
+
+# Set CSRF Cookie
+gem 'angular_rails_csrf'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -51,6 +61,8 @@ group :development, :test do
 
     # RSpec for Rails
   gem 'rspec-rails'
+
+  gem 'ffaker', git: 'https://github.com/EmmanuelOga/ffaker.git'
 
   # Guard is a command line tool to easily handle events on file system modifications.
   gem 'guard', require: false
