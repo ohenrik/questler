@@ -18,8 +18,9 @@ require 'ffaker'
   quest.title = FFaker::Lorem.words(num = Random.rand(1..3)).join(" ")
   quest.excerpt = FFaker::Lorem.paragraphs(paragraph_count = Random.rand(1..2)).join(" ")
 
-  3.times do 
-    slug = ['slideshow', 'container', 'sidebar_right', 'sidebar_left', 'jumbotron'].sample
+  1.times do 
+    #slug = ['slideshow', 'container', 'sidebar_right', 'sidebar_left', 'jumbotron'].sample
+    slug = 'small-container'
     struct = quest.structures.new(name: slug.humanize, slug: slug, description: FFaker::Lorem.sentence(word_count = Random.rand(1..2)) )
   end # Structures
 
@@ -29,13 +30,13 @@ end # Quests
 
 Structure.all.each do |structure|
 
-    3.times do
+    1.times do
 
-      text_item = TextItem.new(title: FFaker::Lorem.words(num = Random.rand(1..3)).join(" "), content: FFaker::Lorem.paragraphs(paragraph_count = Random.rand(3..5)).join(" ") )
-      text_item.save!
+      text_item = TextItem.new(title: FFaker::Lorem.words(num = Random.rand(1..3)).join(" "), content: FFaker::Lorem.paragraphs(paragraph_count = Random.rand(2..3)).join(" ") )
+      #code_item = CodeItem.new(code: FFaker::HTMLIpsum.table() )
 
       item = structure.items.new()
-      item.itemizable = text_item
+      item.itemizable = text_item #[text_item, code_item].sample
 
     end # Items
 
@@ -44,7 +45,7 @@ Structure.all.each do |structure|
 end
 
 
-5.times do
+2.times do
   user = User.new()
   user.email = FFaker::Internet.email
   user.first_name = FFaker::Name.first_name

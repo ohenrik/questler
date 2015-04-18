@@ -74,7 +74,6 @@ class QuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quest_params
-      #binding.pry
-      params.permit(:title, :excerpt, {structures_attributes: [:id, :name, :slug, :description, :_destroy]} )
+      params.permit(:title, :excerpt, { structures_attributes: [:id, :name, :slug, :description, :_destroy],  items_attributes: [:id, :title, :content, :structure_id, :itemizable_id, :itemizable_type, :_destroy] } )
     end
 end
