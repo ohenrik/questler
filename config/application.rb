@@ -33,7 +33,7 @@ module Questler
 
     config.middleware.use Rack::Cors do
       allow do
-        origins ENV['ANGULAR_URL']
+        origins '*'
         resource '*', headers: :any,
                       expose:  ['X-Token', 'X-Authentication-URL'],
                       methods: [:get, :post, :put, :delete, :options, :patch]
