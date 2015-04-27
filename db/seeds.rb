@@ -9,24 +9,24 @@
 
 require 'ffaker'
 
-[User, Quest, TextItem].each(&:delete_all)
+[User, Page, TextItem].each(&:delete_all)
 
 
 
 5.times do
-  quest = Quest.new()
-  quest.title = FFaker::Lorem.words(num = Random.rand(1..3)).join(" ")
-  quest.excerpt = FFaker::Lorem.paragraphs(paragraph_count = Random.rand(1..2)).join(" ")
+  page = Page.new()
+  page.title = FFaker::Lorem.words(num = Random.rand(1..3)).join(" ")
+  page.excerpt = FFaker::Lorem.paragraphs(paragraph_count = Random.rand(1..2)).join(" ")
 
-  1.times do 
+  1.times do
     #slug = ['slideshow', 'container', 'sidebar_right', 'sidebar_left', 'jumbotron'].sample
     slug = 'small-container'
-    struct = quest.structures.new(name: slug.humanize, slug: slug, description: FFaker::Lorem.sentence(word_count = Random.rand(1..2)) )
+    struct = page.structures.new(name: slug.humanize, slug: slug, description: FFaker::Lorem.sentence(word_count = Random.rand(1..2)) )
   end # Structures
 
-  quest.save!
+  page.save!
 
-end # Quests
+end # Pages
 
 Structure.all.each do |structure|
 
@@ -55,5 +55,3 @@ end
   user.remote_avatar_url = FFaker::Avatar.image(user.username, '500x500', 'png', '1')
   user.save!
 end
-
-

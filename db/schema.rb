@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418143011) do
+ActiveRecord::Schema.define(version: 20150427192902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150418143011) do
   add_index "items", ["itemizable_type", "itemizable_id"], name: "index_items_on_itemizable_type_and_itemizable_id", using: :btree
   add_index "items", ["structure_id"], name: "index_items_on_structure_id", using: :btree
 
-  create_table "quests", force: :cascade do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "title"
     t.text     "excerpt"
     t.datetime "created_at", null: false

@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "quests/edit", type: :view do
+RSpec.describe "pages/edit", type: :view do
   before(:each) do
-    @quest = assign(:quest, Quest.create!(
+    @page = assign(:page, Page.create!(
       :title => "MyString",
       :excerpt => "MyText"
     ))
   end
 
-  it "renders the edit quest form" do
+  it "renders the edit page form" do
     render
 
-    assert_select "form[action=?][method=?]", quest_path(@quest), "post" do
+    assert_select "form[action=?][method=?]", page_path(@page), "post" do
 
-      assert_select "input#quest_title[name=?]", "quest[title]"
+      assert_select "input#page_title[name=?]", "page[title]"
 
-      assert_select "textarea#quest_excerpt[name=?]", "quest[excerpt]"
+      assert_select "textarea#page_excerpt[name=?]", "page[excerpt]"
     end
   end
 end

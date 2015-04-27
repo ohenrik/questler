@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "quests/show", type: :view do
+RSpec.describe "pages/show", type: :view do
   before(:each) do
-    @quest = assign(:quest, Quest.create!(
+    @page = assign(:page, Page.create!(
       :title => "Title",
       :excerpt => "MyText"
     ))

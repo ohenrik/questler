@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :structures
 
-  resources :quests
+  resources :pages
 
   get 'login' => 'sessions#new'
 

@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "quests/new", type: :view do
+RSpec.describe "pages/new", type: :view do
   before(:each) do
-    assign(:quest, Quest.new(
+    assign(:page, Page.new(
       :title => "MyString",
       :excerpt => "MyText"
     ))
   end
 
-  it "renders new quest form" do
+  it "renders new page form" do
     render
 
-    assert_select "form[action=?][method=?]", quests_path, "post" do
+    assert_select "form[action=?][method=?]", pages_path, "post" do
 
-      assert_select "input#quest_title[name=?]", "quest[title]"
+      assert_select "input#page_title[name=?]", "page[title]"
 
-      assert_select "textarea#quest_excerpt[name=?]", "quest[excerpt]"
+      assert_select "textarea#page_excerpt[name=?]", "page[excerpt]"
     end
   end
 end
